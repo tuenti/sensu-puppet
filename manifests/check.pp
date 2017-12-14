@@ -20,6 +20,10 @@
 #   Array of Strings.  Handlers to use for this check
 #   Default: undef
 #
+# [*pager_team*]
+#   String.  Pager team to use in pagerduty integration
+#   Default: undef
+#
 # [*standalone*]
 #   Boolean.  When true, scheduled by the client.  When false, listen for published check request
 #   Default: true
@@ -85,6 +89,7 @@ define sensu::check(
   $ensure              = 'present',
   $type                = undef,
   $handlers            = undef,
+  $pager_team          = undef,
   $standalone          = true,
   $interval            = 60,
   $occurrences         = undef,
@@ -161,6 +166,7 @@ define sensu::check(
     standalone          => $standalone,
     command             => $command,
     handlers            => $handlers,
+    pager_team          => $pager_team,
     interval            => $interval,
     occurrences         => $occurrences,
     refresh             => $refresh,
